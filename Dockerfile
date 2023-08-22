@@ -29,7 +29,8 @@ RUN apt-get update && apt-get install -y \
 COPY . /var/www/html
 
 COPY ./.env /var/www/html/.env
-USER www-data
+RUN ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
