@@ -26,9 +26,8 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_pgsql \
     && docker-php-source delete \
 
-COPY . /var/www/html
+COPY . .
 
-COPY ./.env /var/www/html/.env
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 # Install composer
