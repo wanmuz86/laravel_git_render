@@ -1,19 +1,5 @@
 FROM php:8.1-fpm-alpine
-WORKDIR /var/www/html
 
-RUN apk update && \
-    apk add postgresql-dev
-
-
-RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN docker-php-ext-install pdo pdo_pgsql
-
-RUN curl -sS https://getcomposer.org/installer | php -- --version=2.4.3 --install-dir=/usr/local/bin --filename=composer
-
-COPY . .
-FROM php:8.0-fpm
-
-USER root
 
 WORKDIR /var/www/html
 
