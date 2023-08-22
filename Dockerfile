@@ -1,8 +1,11 @@
 FROM php:8.1-fpm-alpine
 WORKDIR /var/www/html
 
-RUN apk update  
-RUN apk install -y libpq-dev
+RUN apk update && \
+    apk add --virtual build-deps gcc python-dev musl-dev && \
+    apk add postgresql-dev
+
+RUN pip install psycopg2
 
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install pdo pdo_pgsql
