@@ -1,4 +1,4 @@
-FROM php:8.1.0alpha3-fpm-alpine
+FROM php:8.1-fpm
 WORKDIR /var/www/html
 
 RUN apk update 
